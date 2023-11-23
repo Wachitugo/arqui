@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="{% static 'js/administracion.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'styles/ver.css' %}">
+</head>
+<body>
+    <a href="{% url 'Casino:index'%}?nom=admin&con=admin" class="volver" style="background-image: url({% static 'images/volver.png' %});"></a>
+    <button id="btnAdministrar" style="display: none;"></button>
+    <div id="cuadro"></div>
+    <h1>USUARIOS</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Ingrese nombre">
+        <button type="submit">Buscar</button>
+    </form>
+    <div style="background-color: rgba(240, 248, 255, 0.671);">
+        <table style="border-collapse: collapse;">
+            <tr>
+                <th>RUT</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Direccion</th>
+                <th>Usuario</th>
+                <th>Contraseña</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+            </tr>
+            {% for m in usuarios %}
+                <tr style="border-bottom: 1px solid black;">
+                    <td>{{m.RUN}}-{{m.DV}}</td>
+                    <td>{{m.PNOMBRE}}</td>
+                    <td>{{m.APPATERNO}}</td>
+                    <td>{{m.DIRECCION}}</td>
+                    <td>{{m.NOM_USUARIO}}</td>
+                    <td>{{m.CONTRASENA}}</td>
+                    <td>{{m.CORREO}}</td>
+                    <td>{{m.NRO_TELEFONICO}}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="8"><h4>No se encontraron usuarios</h4></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+</body>
+<footer>  
+    <p>© 2023, Duoc uc</p>
+    <p>Todos los derechos reservados.</p>
+</footer>
+</html>

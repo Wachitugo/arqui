@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Usuario</title>
+    <link rel="stylesheet" href="{% static 'styles/eliminar.css' %}">
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</head>
+<body>
+    <a href="{% url 'Casino:index' %}?nom=admin&con=admin" class="volver" style="background-image: url({% static 'images/volver.png' %});"></a>
+    <h1>Eliminar un usuario</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="nombre">Selecciona un usuario:</label>
+        <select name="nombre" id="nombre">
+            {% for usuario in usuarios %}
+                <option value="{{ usuario.RUN }}">{{ usuario.PNOMBRE }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" name="opcion" value="Eliminar" onclick="showAlert()" style="margin-top: 10%;">Eliminar</button>
+    </form>
+    <script>
+        function showAlert() {
+          alert("Datos eliminados !");
+        }
+    </script>
+</body>
+<footer>  
+    <p>© 2023, Duoc uc</p>
+    <p>Todos los derechos reservados.</p>
+</footer>
+</html>

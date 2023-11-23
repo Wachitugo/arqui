@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar un usuario</title>
+    <link rel="stylesheet" href="{% static 'styles/agregar.css'%}">
+</head>
+<body>
+    <h1>Agregar un usuario</h1>
+    <a href="{% url 'Casino:index'%}?nom=admin&con=admin" class="volver" style="background-image: url({% static 'images/volver.png' %});"></a>
+    <form action="../mecanico_agregar/" method="post">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <input type="submit" name="opcion" value="Enviar">
+    </form>
+    
+    <script>
+        function showAlert() {
+            alert("Datos guardados !");
+        }
+        
+        document.querySelector("form").addEventListener("submit", function(event) {
+            if (document.querySelectorAll("input:invalid").length > 0) {
+                event.preventDefault(); 
+                alert("Por favor, complete todos los campos requeridos.");
+            }
+        });
+    </script>
+    <script>
+        {% if error_message %}
+            window.onload = function() {
+                alert("{{ error_message }}");
+            }
+        {% endif %}
+    </script>
+</body>
+<footer>  
+    <p>© 2023, Duoc uc</p>
+    <p>Todos los derechos reservados.</p>
+</footer>
+</html>

@@ -1,0 +1,65 @@
+body {
+  background-color: #d0d0d0;
+  background-size: cover;
+  background-position: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  p {
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type="submit"],
+  button {
+    background-color: #3487f5;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #555;
+  }
+  
+  footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+  }
+  .volver {
+    background-image: url('static 'images/volver.png'');
+    background-size: cover;
+    background-position: center;
+    width: 33px;
+    height: 33px;
+  }

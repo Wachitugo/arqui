@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar datos de un usuario</title>
+    <link rel="stylesheet" href="{% static 'styles/modificar.css'%}">
+</head>
+<body>
+    
+    <a href="{% url 'Casino:index'%}?nom=admin&con=admin" class="volver" style="background-image: url('{% static 'images/volver.png' %}');"></a>
+    <h1>Modificar datos de un usuario</h1>
+    <form action="../modificaruser/" method="post" onsubmit="submitForm(event)">
+        {% csrf_token %}
+    
+        <select name="rut" id="selectRut">
+            {% for user in usuarios %}
+                <option value="{{ user.rut }}" data-nombre="{{ user.nombre }}" data-contra="{{ user.contra }}" data-ciudad="{{ user.id_ciudad }}" data-saldo="{{ user.saldo }}" data-correo="{{ user.correo }}">{{ user.rut }}</option>
+            {% endfor %}
+        </select>
+        <button type="button" id="seleccionButton">Seleccionar un rut</button>
+    
+        {% if usuario is defined %}
+            <input type="hidden" name="rut_text" value="{{ usuario.rut }}">
+        {% endif %}
+    
+        <p>RUT:                        <input readonly type="text" name="rut_text" id="rut_text" value="{{ usuario.rut|default_if_none:'' }}" ></p>
+        <p>Nombre:                    <input type="text" name="nombre" id="nombre" value="{{ usuario.nombre|default_if_none:'' }}"></p>
+        <p>Contra:                    <input type="text" name="contra" id="contra" value="{{ usuario.contra|default_if_none:'' }}"></p>
+        <p>Ciudad:                    <select name="nombre_ciudad" id="nombre_ciudad">
+            {% for ciudad in nombre_ciudad %}
+                <option value="{{ ciudad.nombre_ciudad }}">{{ ciudad.nombre_ciudad }}</option>  
+            {% endfor %}
+        </select></p>
+        <p>Saldo:                     <input type="text" name="saldo" id="saldo" value="{{ usuario.saldo|default_if_none:'' }}"></p>
+        <p>Correo:                    <input type="text" name="correo" id="correo" value="{{ usuario.correo|default_if_none:'' }}"></p>
+
+        <input type="submit" name="opcion" value="Actualizar datos" onclick="showAlert()">
+        
+    </form>
+
+    <script>
+        function clearFields() {
+            document.getElementById('rut_text').value = '';
+            document.getElementById('nombre').value = '';
+            document.getElementById('contra').value = '';
+            document.getElementById('nombre_ciudad').value = '';
+            document.getElementById('saldo').value = '';
+            document.getElementById('correo').value = '';
+        }
+
+        function submitForm(event) {
+            event.preventDefault(); 
+            var form = event.target; 
+            var formData = new FormData(form); 
+            var xhr = new XMLHttpRequest(); 
+            xhr.open(form.method, form.action); 
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    clearFields(); 
+                }
+            };
+            xhr.send(formData); 
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('seleccionButton').addEventListener('click', function() {
+            var selectElement = document.getElementById('selectRut');
+            var selectedIndex = selectElement.selectedIndex;
+            if (selectedIndex >= 0) {
+                var selectedOption = selectElement.options[selectedIndex];
+                document.getElementById('rut_text').value = selectedOption.value;
+                document.getElementById('nombre').value = selectedOption.dataset.nombre;
+                document.getElementById('contra').value = selectedOption.dataset.contra;
+
+                var idCiudad = selectedOption.getAttribute('data-ciudad');
+                var selectCiudad = document.getElementById('nombre_ciudad');
+                for (var i = 0; i < selectCiudad.options.length; i++) {
+                    var option = selectCiudad.options[i];
+                    if (option.value === idCiudad) {
+                        option.selected = true;
+                        break;
+                    }
+                }
+
+                document.getElementById('saldo').value = selectedOption.dataset.saldo;
+                document.getElementById('correo').value = selectedOption.dataset.correo;
+            }
+        });
+    });
+    </script>
+    <script>
+        function showAlert() {
+          alert("Datos modificados !");
+        }
+    </script>
+    <script>
+        {% if error_message %}
+            window.onload = function() {
+                alert("{{ error_message }}");
+            }
+        {% endif %}
+    </script>
+</body>
+<footer>  
+    <p>© 2023, Duoc uc</p>
+    <p>Todos los derechos reservados.</p>
+</footer>
+</html>

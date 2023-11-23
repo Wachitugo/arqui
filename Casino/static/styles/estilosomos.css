@@ -1,0 +1,119 @@
+
+
+#titulo{
+    margin-right: 39%;
+    font-size: 4vw;
+}
+#palabra2{
+    color: orange;
+}
+footer {
+    background-color: rgb(52, 135, 245);
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    margin-top: 10%;
+} 
+.support-button{
+    height: 60px;
+    width: 60px;
+    border-radius: 60px;
+    background-color:orange;
+    box-shadow: 0px 3px 12px rgba(0,0, 0, 2);
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+h2{
+    text-align: center;
+}
+.lbl{
+    display: inline-block;
+    width: 65px;
+    height: 33px;
+    background-color: #979797;
+    border-radius: 100px;
+    cursor: pointer;
+    position: relative;
+    transition: .3s;
+    margin: 20px;
+}
+
+.lbl::after{
+    content: '';
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: black;
+    border-radius: 100px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: .3s;
+}
+#toggleCheckbox:checked + .lbl::after{
+    left: 35px;
+}
+
+#toggleCheckbox:checked + .lbl{
+    background: orange;
+}
+#toggleCheckbox{
+    display: none;
+}
+.card{
+    transition: transform 1s linear;
+} 
+.rotating {
+    animation: rotate 2s linear infinite;
+}
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+      border-radius: 100%;
+
+    }
+    to {
+      transform: rotate(360deg);
+      border-radius: 100%;
+    }
+  }
+  .rainbow {
+    animation: colorchange .3s; 
+    animation-timing-function: ease-in-out; 
+    animation-iteration-count: infinite; 
+    animation-play-state: running;
+}
+
+@keyframes colorchange { 
+    0% { background: #ff0000; } 
+    14% { background: #ffa500; } 
+    28% { background: #ffff00; } 
+    42% { background: #008000; } 
+    56% { background: #0000ff; }
+    70% { background: #4b0082; } 
+    84% { background: #ee82ee; } 
+    100% { background: #ff0000; }
+}
+.custom-carousel {
+    width: 90%;
+    height: 400px;
+    margin: 0 auto; 
+    display: block; 
+  }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 15px;
+  width: 15px;
+}
+
+.custom-button {
+    width: 30px;
+    height: 100px;
+  }

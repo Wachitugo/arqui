@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es-CL">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content=" Andres silva - Benjamín Ruiz - Andrus Maldonado" />
+  <meta name="description" content="La pagina oficial del casino del duoc algo nunca antes visto la comidita duocana es la mejor que ricooooooooo">
+  <title>Casino</title>
+  <link rel="icon" type="image/png" href="{% static 'images/logo.jpg' %}">
+  <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="{% static 'js/login.js' %}"></script>
+  <script>
+    $(document).ready(function() {
+      $('body').animate({ opacity: 1 }, 300); // Animación de opacidad durante 1 segundo
+    });
+  </script>
+    <script>
+      function openModal() {
+        document.getElementById("myModal").style.display = "block";
+      }
+      function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+      }
+    </script>
+    
+      
+    
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'Casino:index' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Casino:menu' %}">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Casino:mi_perfil' %}">Servicios</a>
+            </li>
+          </ul>
+        </div>
+        <h1 id="titulo"><span id="palabra2"></span>ServiExpress</h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <button id="btnAdministrar" disabled onclick="openModal()" style="background-color: orange;">Administrar</button>
+      </div>
+    </nav>
+  </header>
+  <section name="ADMINISTRACION">
+    <div id="myModal" class="modal">
+      <div id="modal-content"class="modal-content" style="height: 421.6px;">
+        <span class="close" onclick="closeModal()">&times;</span> 
+        <h3 id="tituloadministracion">Administrar</h3>
+        <button class="admboton"><a class="admlink" href="{% url 'mecanico:mecanico_agregar' %}">Agregar usuario</a></button>
+        <br>
+        <button class="admboton"><a class="admlink" href="{% url 'mecanico:mecanico_eliminar' %}">Eliminar usuario</a></button>
+        <br>
+        <button class="admboton"><a class="admlink" href="{% url 'mecanico:mecanico_modificar' %}">Modificar usuario</a></button>
+        <br>
+        <button class="admboton"><a class="admlink" href="{% url 'mecanico:mecanico_ver' %}">Ver usuarios</a></button>
+        <br><br><br><br>
+      </div>
+    </div>
+  </section>
+  <section name="LOGIN DE LA PAGINA">
+    <div id="cuadro" class="modal" style="display: none;">
+      <form id="formm" class="modal-content animate" method="post" style="width: 901.6px;">
+        <div class="imagen">
+          <img src="{% static 'images/perfil_incongito.png' %}" alt="Avatar" class="avatar">
+        </div>
+        <div class="container" id="formulario">
+          <label for="uname"><b>Usuario</b></label>
+          <input type="text" placeholder="Nombre de Usuario" name="uname" autocomplete="off" id="nom"required>
+          <label for="contra"><b>Contraseña</b></label>
+          <input type="password" placeholder="Contraseña" name="contra" autocomplete="off" id="con"required>
+          <button type="submit" id="btn_entrar" onclick=entrar() >Ingresar</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Recordarme
+          </label>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" ;>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'images/autos-mantencion.jpg' %}" class="d-block w-100" alt="Imagen mecanico 1">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/autos-trabajados.jpg' %}" class="d-block w-100" alt="Imagen mecanico 2">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/mecanicos.jpg' %}" class="d-block w-100" alt="Imagen mecanico 3">
+        </div>
+
+      </div>
+    </div>
+
+
+    <br><br>
+    <h1>Servicios Ofrecidos</h1>
+    <br>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-4">
+          <div class="card" style="width: 20  rem;">
+            <img src="{% static 'images/cambio_neumaticos.jpeg' %}" class="card-img-top" alt="Servicios taller" width="200" height="415">
+            <div class="card-body">
+              <h5 class="card-title">Cambio de neumáticos</h5> 
+          </div>
+          <button>Agendar hora</button>
+          </div>
+          <br><br>
+        </div>
+
+        <div class="col-4">
+          <div class="card" style="width: 20  rem;">
+            <img src="{% static 'images/cambiar-aceite-auto.jpg' %}" class="card-img-top" alt="Servicios taller" width="200" height="415">
+            <div class="card-body">
+              <h5 class="card-title">Cambio de aceite</h5>
+          </div>
+          <button>Agendar hora</button>
+          </div>
+
+        </div>
+
+        <div class="col-4">
+          <div class="card" style="width: 20  rem;">
+            <img src="{% static 'images/cambio-de-color-de-auto.jpg' %}" class="card-img-top" alt="Servicios taller" width="200" height="415">
+            <div class="card-body">
+              <h5 class="card-title">Cambio de color</h5>
+          </div>
+          <button>Agendar hora</button>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card" style="width: 20  rem;">
+            <img src="{% static 'images/polarizado.jpg' %}" class="card-img-top" alt="Servicios taller" width="200" height="415">
+            <div class="card-body">
+              <h5 class="card-title">Polarizado</h5>
+          </div>
+          <button>Agendar hora</button>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card" style="width: 20  rem;">
+            <img src="{% static 'images/mantenimiento.jpg' %}" class="card-img-top" alt="Servicios taller" width="200" height="415">
+            <div class="card-body">
+              <h5 class="card-title">Mantenimiento</h5>
+          </div>
+          <button>Agendar hora</button>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="card" style="width: 20  rem;">
+            <img src="{% static 'images/rayo.jpg' %}" class="card-img-top" alt="Servicios taller" width="200" height="415">
+            <div class="card-body">
+              <h5 class="card-title">tuneada a piso</h5>
+          </div>
+          <button>Agendar hora</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </br>
+    </br>
+    </br>
+  </section>
+  <footer>
+    <span>Contacto</span>  
+    <p> Acario Cotapos 3055, Alerce, Chile</p>
+    <p> Taller@Serviexpress.cl</p>
+    <p>+56946224990</p>
+    <p>© 2023, ServiExpress</p>
+    <p>Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    
+</body>
+
+</html>
