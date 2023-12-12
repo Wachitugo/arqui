@@ -52,3 +52,12 @@ footer p {
 .container{
     margin-top: 5%;
 }
+.my-datepicker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
