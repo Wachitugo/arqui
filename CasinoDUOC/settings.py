@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mecanico',
         'USER':'root',
-        'PASSWORD':'1234567',
+        'PASSWORD':'1234',
         'HOST':'localhost',
         'PORT':'3306'
     }
@@ -128,8 +128,6 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '')
-
-MEDIA_URL = '/imagenes/'
+MEDIA_URL = 'imagenes/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

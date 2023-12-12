@@ -1,3 +1,6 @@
+h1{
+    text-align: center;
+}   
 
 #titulo{
     margin-right: 39%;
@@ -6,15 +9,32 @@
 #palabra2{
     color: orange;
 }
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1 0 auto;
+}
+
 footer {
-    background-color: #000000;
+    background-color: rgb(52, 58, 64); 
     color: #ffffff;
     padding: 20px;
     text-align: center;
     font-size: 14px;
     font-family: Arial, sans-serif;
-    margin-top: 15%;
-} 
+    flex-shrink: 0;
+}
+footer h3 {
+    font-size: 20px; 
+    margin-bottom: 20px; 
+}
+
+footer p {
+    margin-bottom: 10px; 
+}
 .support-button{
     height: 60px;
     width: 60px;
