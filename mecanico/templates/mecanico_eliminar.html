@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar Usuario</title>
     <link rel="stylesheet" href="{% static 'styles/eliminar.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <script>
         function goBack() {
             window.history.back();
@@ -13,7 +15,27 @@
     </script>
 </head>
 <body>
-    <a href="{% url 'Casino:index' %}?nom=admin&con=admin" class="volver" style="background-image: url({% static 'images/volver.png' %});"></a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'Casino:index'%}?nom=admin&con=admin">ServiExpress</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'mecanico:mecanico_ver' %}">Ver clientes</a>
+              </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="{% url 'mecanico:mecanico_agregar' %}">Añadir cliente <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'mecanico:mecanico_eliminar' %}">Eliminar cliente</a>
+            </li>
+
+
+          </ul>
+        </div>
+      </nav>
     <h1>Eliminar un usuario</h1>
     <form method="post">
         {% csrf_token %}

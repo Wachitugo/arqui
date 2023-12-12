@@ -53,30 +53,18 @@
           </ul>
         </div>
         <h1 id="titulo">ServiExpress</h1>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <button id="btnAdministrar" disabled onclick="openModal()" style="background-color: orange;">Administrar</button>
+
+        
+        <button id="btnAdministrar" style="background-color: orange;"><a class="admlink" href="{% url 'mecanico:mecanico_ver' %}">Administrar</a></button>
       </div>
     </nav>
   </header>
-  <section name="ADMINISTRACION">
-    <div id="myModal" class="modal">
-      <div id="modal-content"class="modal-content" style="height: 421.6px;">
-        <span class="close" onclick="closeModal()">&times;</span> 
-        <h3 id="tituloadministracion">Administrar</h3>
-        <button class="admboton"><a class="admlink" href="{% url 'mecanico:mecanico_agregar' %}">Agregar usuario</a></button>
-        <br>
-        <button class="admboton"><a class="admlink" href="{% url 'mecanico:mecanico_eliminar' %}">Eliminar usuario</a></button>
-        <br>
-        <button class="admboton"><a class="admlink" href="{% url 'mecanico:mecanico_modificar' %}">Modificar usuario</a></button>
-        <br>
-        <button class="admboton"><a class="admlink" href="{% url 'mecanico:mecanico_ver' %}">Ver usuarios</a></button>
-        <br><br><br><br>
-      </div>
-    </div>
-  </section>
+
   <section name="LOGIN DE LA PAGINA">
     <div id="cuadro" class="modal" style="display: none;">
       <form id="formm" class="modal-content animate" method="post" style="width: 901.6px;">
