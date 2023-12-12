@@ -10,7 +10,7 @@ h3{
 }   
 
 .carousel-inner img {
-    max-height: 400px;
+    max-height: 550px;
 }
 
 .support-button{
@@ -27,8 +27,9 @@ h3{
     right: 30px;
 }
 #titulo{
-    margin-right: 39%;
+    margin-right: 35%;
     font-size: 4vw;
+    font-weight: bold;
 }
 #palabra2{
     color: orange;
@@ -195,4 +196,32 @@ span.contra {
 
 .admboton:hover{
     background-color: rgb(52, 135, 245);
+}
+
+.intro-section {
+    display: flex;
+    align-items: center; /* Esto centrará verticalmente el texto y la imagen */
+    gap: 20px; /* Esto agregará un espacio entre la imagen y el texto */
+}
+
+.intro-section img {
+    width: 40%; /* Esto hará que la imagen ocupe la mitad del ancho del contenedor */
+    object-fit: cover; /* Esto asegura que la imagen se redimensione correctamente */
+}
+
+.intro-section h3 {
+    width: 50%; /* Esto hará que el texto ocupe la mitad del ancho del contenedor */
+    margin-left: 250px;
+}
+
+.intro-section {
+    display: flex;
+    align-items: center; /* Esto centrará verticalmente el texto y la imagen */
+    gap: 20px; /* Esto agregará un espacio entre la imagen y el texto */
+}
+
+
+#compromiso {
+    font-size: 3em; /* Ajusta este valor según tus necesidades */
+    text-align: center; /* Esto centrará el texto */
 }
