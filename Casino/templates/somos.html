@@ -59,7 +59,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ producto.NOM_PRODUCTO }}</h5>
               <p class="card-text">{{ producto.DESCRIPCION }}</p>
-            <p class="card-text"><small class="text-muted">Precio: {{ producto.PRECIO }}</small></p>
+            <p class="card-text"><small class="text-muted">Precio: ${{ producto.PRECIO }}</small></p>
             <button onclick="showNotification()">Pagar</button>
             <script>
                 function showNotification() {
