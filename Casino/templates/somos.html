@@ -59,7 +59,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ producto.NOM_PRODUCTO }}</h5>
               <p class="card-text">{{ producto.DESCRIPCION }}</p>
-            <p class="card-text"><small class="text-muted">Precio: {{ producto.PRECIO }}</small></p>
+            <p class="card-text"><small class="text-muted">Precio: ${{ producto.PRECIO }}</small></p>
             <button onclick="showNotification()">Pagar</button>
             <script>
                 function showNotification() {
@@ -105,7 +105,7 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-<footer>
+<footer style="    background-color: rgb(52, 58, 64); ">
   <h3>Contacto</h3>  
   <p><i class="fas fa-map-marker-alt"></i> Acario Cotapos 3055, Alerce, Chile</p>
   <p><i class="fas fa-envelope"></i> Taller@ServiExpress.cl</p>

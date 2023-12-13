@@ -27,7 +27,7 @@
                             <a class="nav-link" href="{% url 'Casino:menu' %}">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
+                            <a class="nav-link " aria-current="page"
                                 href="{% url 'Casino:mi_perfil' %}">Servicios</a>
                         </li>
                     </ul>
@@ -89,7 +89,6 @@
                     <p class="card-text">{{ producto.DESCRIPCION }}</p>
                     <p class="card-text"><small class="text-muted">Precio: {{ producto.PRECIO }}</small></p>
                     <a href="{% url 'Casino:producto' producto.ID_PRODUCTO %}" class="btn btn-primary">Comprar</a>
-
                   </div>
                 </div>
               </div>
@@ -109,8 +108,12 @@
       </div>
 </body>
 <footer>
-    <p>© 2023, Duoc uc</p>
+    <h3>Contacto</h3>  
+    <p><i class="fas fa-map-marker-alt"></i> Acario Cotapos 3055, Alerce, Chile</p>
+    <p><i class="fas fa-envelope"></i> Taller@ServiExpress.cl</p>
+    <p><i class="fas fa-phone"></i> +56946224990</p>
+    <p>© 2023, ServiExpress</p>
     <p>Todos los derechos reservados.</p>
-</footer>
+  </footer>
 
 </html>
