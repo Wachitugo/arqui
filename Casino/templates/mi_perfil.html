@@ -58,23 +58,23 @@
       <br>
       <div class="modal fade" id="reservaModal" tabindex="-1" role="dialog" aria-labelledby="reservaModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="reservaModalLabel">Selecciona una fecha</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reservaModalLabel">Selecciona una fecha y hora</h5>
+                </div>
+                <div class="modal-body">
+                    <label for="datePicker">Fecha:</label>
+                    <input type="date" id="datePicker">
+                    <label for="timePicker">Hora:</label>
+                    <input type="time" id="timePicker">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="aceptarBtn">Aceptar</button>
+                </div>
             </div>
-            <div class="modal-body">
-              <div id="datetimepicker" class="my-datepicker"></div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="aceptarBtn">Aceptar</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
       <div class="container">
         <div class="row">
           <div class="col-4">
