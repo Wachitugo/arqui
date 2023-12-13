@@ -31,12 +31,7 @@ h1:not(#nuestro){
 #nuestro{
     color: rgb(0, 0, 0);
 }
-.card:hover{
--webkit-box-shadow: -2px 1px 25px 4px rgba(0,0,0,0.75);
--moz-box-shadow: -2px 1px 25px 4px rgba(0,0,0,0.75);
-box-shadow: -2px 1px 25px 4px rgba(0,0,0,0.75);
-transition: 0.5s;
-}
+
 footer {
     background-color: rgb(52, 58, 64); 
     color: #ffffff;
@@ -201,4 +196,17 @@ footer p {
 
 #boton_comprar:hover{
     background-color: darkgray;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 15px;
+  width: 15px;
+}
+
+.custom-button {
+    width: 30px;
+    height: 100px;
+  }
+h2{
+    text-align: center;
 }

@@ -20,7 +20,10 @@ def mi_perfil(request):
 
 
 def soporte(request, id_servicio):
-    return render(request, 'soporte.html', {'id_servicio': id_servicio})
+    servicio = get_object_or_404(Servicio, ID_SERVICIO=id_servicio)
+    todos_productos = Producto.objects.all()[:9]  # Obtén 9 productos
+    productos_grupos = zip(*[iter(todos_productos)]*3)
+    return render(request, 'soporte.html', {'servicio': servicio,'productos_grupos': productos_grupos})
     
 
 def somos(request, id_producto):

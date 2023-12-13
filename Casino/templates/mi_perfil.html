@@ -46,35 +46,26 @@
             </div>
         </nav>
     </header>
+    
     <section class="main" style="background-image: url('{% static 'images/autos-mantencion.jpg' %}'); background-size: cover;">
       <div class="container py-5" ><br><br><br><br>
             <div class="container" id="bloque">
               <h1 id="nuestro">Servicios Ofrecidos</h1>
         </div>
         <br><br><br><br>
+        
       </div>
     </section>
     <section>
       <br>
-      <div class="modal fade" id="reservaModal" tabindex="-1" role="dialog" aria-labelledby="reservaModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="reservaModalLabel">Selecciona una fecha y hora</h5>
-                </div>
-                <div class="modal-body">
-                    <label for="datePicker">Fecha:</label>
-                    <input type="date" id="datePicker">
-                    <label for="timePicker">Hora:</label>
-                    <input type="time" id="timePicker">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="aceptarBtn">Aceptar</button>
-                </div>
-            </div>
+      <div class="container py-5">
+        <div class="row py-5 m-auto text-center">
+          <div class="col-lg-5 ">
+            <h1>Nuestras servicios</h1>
+            <h6 style="color: rgb(0, 0, 107); text-align: left; margin-left: 19%;">Disponibles en ServiExpress</h6>
+          </div>
         </div>
-    </div>
+
 
 
 
@@ -83,11 +74,12 @@
           {% for servicio in servicios %}
             <div class="col-sm-4">
               <div class="card">
-                {% if producto.IMAGEN %}
+                {% if servicio.IMAGEN %}
                   <img src="{{ servicio.IMAGEN.url }}" width="100" height="200" class="card-img-top" alt="{{ servicio.NOMBRE_SERVICIO }}">
                 {% endif %}
                 <div class="card-body">
                   <h5 class="card-title">{{ servicio.NOMBRE_SERVICIO }}</h5>
+
                   <p class="card-text">{{ servicio.DESCRIPCION }}</p>
                   <p class="card-text">Precio: ${{ servicio.PRECIO }}</p>
                   <a href="{% url 'Casino:agendar_servicios' servicio.ID_SERVICIO %}" class="btn btn-primary">Agendar</a>
@@ -97,6 +89,16 @@
             <br>
           {% endfor %}
           </div>   
+          
+            <button class="carousel-control-prev custom-button" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next custom-button" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
 
 
       </br>
