@@ -29,7 +29,21 @@
         document.getElementById("myModal").style.display = "none";
       }
     </script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#logoutButton").click(function(){
+        $.ajax({
+          url: "{% url 'Casino:logout' %}",
+          type: 'POST',
+          headers: {'X-CSRFToken': '{{ csrf_token }}'},
+          success: function(){
+            location.reload();
+          }
+        });
+      });
+    });
+    </script>
       
     
 </head>
@@ -59,15 +73,27 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        
-        <button id="btnAdministrar" style="background-color: orange;"><a class="admlink" href="{% url 'mecanico:mecanico_ver' %}">Administrar</a></button>
+        {% if user.is_authenticated %}
+        <button id="logoutButton" style="background-color: red;">
+          Cerrar sesión
+        </button>
+      {% else %}
+        <button id="btnIniciarSesion" style="background-color: orange;">
+          <a class="admlink" href="{% url 'Casino:login' %}">Iniciar sesión</a>
+        </button>
+      {% endif %}
+      {% if user.is_authenticated and user.username == 'admin' %}
+      <button id="btnAdministrar" style="background-color: orange;">
+        <a class="admlink" href="{% url 'mecanico:mecanico_ver' %}">Administrar</a>
+      </button>
+    {% endif %}
       </div>
     </nav>
   </header>
 
   <section name="LOGIN DE LA PAGINA">
     <div id="cuadro" class="modal" style="display: none;">
-      <form id="formm" class="modal-content animate" method="post" style="width: 901.6px;">
+      <form id="formm" class="modal-content animate" method="POST" style="width: 901.6px;" >
         <div class="imagen">
           <img src="{% static 'images/perfil_incongito.png' %}" alt="Avatar" class="avatar">
         </div>
@@ -76,7 +102,7 @@
           <input type="text" placeholder="Nombre de Usuario" name="uname" autocomplete="off" id="nom"required>
           <label for="contra"><b>Contraseña</b></label>
           <input type="password" placeholder="Contraseña" name="contra" autocomplete="off" id="con"required>
-          <button type="submit" id="btn_entrar" onclick=entrar() >Ingresar</button>
+          <button type="button" id="btn_entrar" onclick="entrar()">Ingresar</button>
           <label>
             <input type="checkbox" checked="checked" name="remember"> Recordarme
           </label>
@@ -130,6 +156,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+  
     
 </body>
 

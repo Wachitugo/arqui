@@ -40,7 +40,73 @@
             </div>
         </nav>
     </header>
+    <div class="card mb-3 mx-auto d-block" style="width: 1500px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{ servicio.IMAGEN.url }}" width="500" height="200" alt="{{ servicio.NOM_PRODUCTO }}" class="img-fluid rounded-start">
+          </div>
+          <div class="col-md-8">
 
+
+            <div class="card-body">
+                <h5 class="card-title">{{ servicio.NOMBRE_SERVICIO }}</h5>
+              <h5 class="card-title">{{ servicio.NOM_SERVICIO }}</h5>
+              <p class="card-text">{{ servicio.DESCRIPCION }}</p>
+
+              <form action="{% url 'Casino:index' %}" method="post">
+                {% csrf_token %}
+
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha">
+                <label for="hora">Hora:</label>
+                <input type="time" id="hora" name="hora" min="09:00" max="20:00">
+                <p>Precio: ${{ servicio.PRECIO }}</p>
+                <input type="submit" value="Agendar" onclick="showNotification()">
+            </form>
+
+            <script>
+                function showNotification() {
+                    alert("Servicio agendado con éxito");
+                    window.location.href = "{% url 'Casino:index' %}";
+                }
+            </script>
+            </div>
+            </div>
+        </div>
+      </div>
+      <h2>Productos</h2>
+      <div id="productCarousel" class="carousel slide custom-carousel" data-bs-ride="carousel" >
+        <div class="carousel-inner">
+          {% for grupo in productos_grupos %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="row">
+              {% for producto in grupo %}
+              <div class="col-md-4">
+                <div class="card">
+                  <img src="{{ producto.IMAGEN.url }}" class="card-img-top" width="100" height="200" alt="{{ producto.NOM_PRODUCTO }}">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ producto.NOM_PRODUCTO }}</h5>
+                    <p class="card-text">{{ producto.DESCRIPCION }}</p>
+                    <p class="card-text"><small class="text-muted">Precio: {{ producto.PRECIO }}</small></p>
+                    <a href="{% url 'Casino:producto' producto.ID_PRODUCTO %}" class="btn btn-primary">Comprar</a>
+
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev custom-button" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next custom-button" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
 </body>
 <footer>
     <p>© 2023, Duoc uc</p>
