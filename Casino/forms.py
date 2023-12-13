@@ -1,5 +1,5 @@
 from django import forms
-from .models import Usuario
+from mecanico.models import Usuario
 
 class UsuarioForm(forms.ModelForm):
     class Meta:
@@ -21,3 +21,4 @@ class UsuarioForm(forms.ModelForm):
         widgets = {
             'CONTRASENA': forms.PasswordInput(),
         }
+

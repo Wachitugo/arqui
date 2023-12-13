@@ -10,6 +10,8 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
+from .forms import UsuarioForm  
+
 
 
 def index(request):
@@ -22,27 +24,25 @@ def login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        if username is None or password is None:
+        if not username or not password:  # Comprueba si el nombre de usuario o la contraseña están vacíos
             return JsonResponse({'success': False, 'error': 'Falta nombre de usuario o contraseña'})
 
         try:
             usuario = Usuario.objects.get(NOM_USUARIO=username)
-            if password == usuario.CONTRASENA:  # Compara las contraseñas directamente
-                # Crea una instancia del modelo User de Django si no existe
+            if password == usuario.CONTRASENA:  
                 user, created = User.objects.get_or_create(username=username)
                 if created:
-                    user.set_unusable_password()  # Establece la contraseña como no utilizable
-                    if username == 'admin':  # Si el nombre de usuario es 'admin'
-                        user.is_superuser = True  # Haz que el usuario sea un superusuario
+                    user.set_unusable_password()  
+                    if username == 'admin':  
+                        user.is_superuser = True  
                     user.save()
-                # Inicia sesión directamente con el usuario Django
                 auth_login(request, user)
-                return JsonResponse({'success': True, 'isAdmin': user.is_superuser})  # Comprueba si el usuario es un superusuario
+                return JsonResponse({'success': True, 'isAdmin': user.is_superuser})  
             return JsonResponse({'success': False, 'error': 'Nombre de usuario o contraseña incorrectos'})
         except Usuario.DoesNotExist:
             return JsonResponse({'success': False, 'error': 'Nombre de usuario o contraseña incorrectos'})
     elif request.method == 'GET':
-        return render(request, 'login.html')  # reemplaza 'login.html' con la plantilla de tu página de inicio de sesión
+        return render(request, 'login.html')  
     else:
         return JsonResponse({'success': False, 'error': 'Método no permitido'})
     
@@ -59,8 +59,17 @@ def mi_perfil(request):
     servicios = Servicio.objects.all()
     return render(request, 'mi_perfil.html', {'servicios': servicios})
 
+
+
 def registro(request):
-    return render(request, 'registro.html')
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = UsuarioForm()    
+    return render(request, 'registro.html', {'form': form})
 
 
 def soporte(request, id_servicio):
